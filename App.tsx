@@ -97,7 +97,7 @@ const App: React.FC = () => {
         )}
 
         {analysis && !isLoading && (
-            <AnalysisResult analysis={analysis} imageUrl={imageUrl} onReset={handleReset} />
+            <AnalysisResult analysis={analysis} imageUrl={imageUrl} imageFile={imageFile} onReset={handleReset} />
         )}
       </main>
       <footer className="mt-8 text-center text-gray-500 text-sm">

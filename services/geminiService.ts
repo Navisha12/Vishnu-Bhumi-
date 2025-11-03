@@ -75,3 +75,35 @@ export const analyzeSoilImage = async (base64Image: string, mimeType: string): P
       throw new Error("The model returned an invalid data format.");
   }
 };
+
+export const askFollowUpQuestion = async (
+  base64Image: string,
+  mimeType: string,
+  analysis: SoilAnalysis,
+  question: string
+): Promise<string> => {
+  const imagePart = {
+    inlineData: {
+      data: base64Image,
+      mimeType: mimeType,
+    },
+  };
+
+  const textPart = {
+    text: `You are an expert agricultural scientist. Based on the provided soil image and the initial analysis below, answer the user's follow-up question. Keep your answer concise and easy to understand for a farmer.
+
+    Initial Analysis:
+    ${JSON.stringify(analysis, null, 2)}
+
+    User's Question:
+    "${question}"
+    `
+  };
+
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.5-flash',
+    contents: { parts: [imagePart, textPart] },
+  });
+  
+  return response.text;
+};
