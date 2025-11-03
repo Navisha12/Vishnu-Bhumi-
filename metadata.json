@@ -1,0 +1,5 @@
+{
+  "name": "Vishnu Bhoomi: Regenerative Farming Assistant",
+  "description": "An intelligent soil monitoring system that provides AI-driven insights from a soil image. It helps farmers maintain healthy soil by identifying soil type, assessing quality, and recommending crops, rest periods, and improvement methods.",
+  "requestFramePermissions": []
+}
